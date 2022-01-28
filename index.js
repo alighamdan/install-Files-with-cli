@@ -115,9 +115,7 @@ function formatter(options, params, payload) {
   bar = bar + options.barIncompleteString.substr(bar.length)
   if(ind >= frames.length - 1) ind = 0;
   ind++;
-  let randcolor = '#' + Math.random().toString(16).substr(-6)
-
-  return ` ${require('chalk').bold.hex(randcolor)(frames[ind])} Downloading... | [${(
+  return ` ${require('colors').rainbow(frames[ind])} [${(
     chalk.bold.hex(rc)(bar)
   )}] ${Math.floor(params.progress * 100)}% | Speed: ${
     state?.speed < 100000
@@ -127,3 +125,4 @@ function formatter(options, params, payload) {
     Math.floor(state?.time.elapsed) + "Sec"
   )} / ${ansiColors.green(Math.floor(state?.time.remaining) + "Sec")} `;
 }
+
